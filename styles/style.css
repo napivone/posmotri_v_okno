@@ -121,7 +121,6 @@ ol {
 
 .search-form__pseudo-checkbox {
   display: inline-flex;
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 19px;
