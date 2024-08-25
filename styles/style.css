@@ -40,8 +40,8 @@ ol {
 .content {
   display: flex;
   justify-content: center;
+  align-content: center;
   gap: 32px;
-  height: 800px;
   padding: 133px 30px;
 }
 
@@ -60,6 +60,7 @@ ol {
 
 .result__video {
   width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
 }
@@ -67,6 +68,7 @@ ol {
 .search-form {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
 }
 
 .search-form__fieldset {
@@ -142,7 +144,7 @@ ol {
 }
 
 .button {
-  border: 1px solid #fff;
+  border: 1px solid currentColor;
   color: inherit;
   font-family: inherit;
   text-align: center;
@@ -164,16 +166,28 @@ ol {
 
 .button:active {
   background-color: #545050;
+  border: 1px double #fff;
+  text-decoration: none;
 }
 
 .button:hover {
   text-decoration-line: underline;
 }
 
+.search-form__textfield:focus {
+  outline: none;
+}
+
 .search-form__submit-button {
   align-self: end;
   width: 194px;
   height: 34px;
+}
+
+.search-form__label
+  .search-form__checkbox:checked
+  + .search-form__pseudo-checkbox::before {
+  opacity: 1;
 }
 
 .more-button {
@@ -186,6 +200,7 @@ ol {
   height: 298px;
   width: 399px;
   overflow-x: hidden;
+  scrollbar-width: thin;
 }
 
 .content__list-item:not(:last-child) {
@@ -213,7 +228,7 @@ ol {
 
 .content__card-link {
   display: block;
-  padding: 2px;
+  margin: 2px;
   color: #fff;
   text-decoration: none;
 }
@@ -240,15 +255,23 @@ ol {
 }
 
 .content__video-card {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fill, 194px);
+  align-items: flex-start;
+  padding: 2px;
 }
 
 .content__video-card-title {
   font-family: Oswald, sans-serif;
+  font-style: normal;
   font-size: 30px;
   font-weight: 700;
   line-height: 100%;
   text-transform: uppercase;
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  overflow: hidden;
 }
 
 .content__video-card-description {
@@ -261,11 +284,13 @@ ol {
 .content__video-card-thumbnail {
   width: 194px;
   height: 103px;
+  object-fit: cover;
+  object-position: top left;
 }
 
 .content__video-card-description-container {
-  width: 200px;
-  height: 100%;
+  block-size: 100%;
+  gap: 6px;
 }
 
 .visually-hidden {
